@@ -1,26 +1,31 @@
-def rps(enemy, me):
+# rock = 1      4       7
+# paper = 2     5       8
+# scissors = 3     6       9
+
+
+def rps(enemy, outcome):
         score = 0
-        if me == "X":
-                if enemy == "A":
-                        score=4
-                elif enemy == "B":
-                        score=1
-                elif enemy == "C":
-                        score=7
-        elif me== "Y":
-                if enemy =="A":
-                        score=8
-                elif enemy == "B":
-                        score=5
-                elif enemy == "C":
-                        score=2
-        elif me== "Z":
-                if enemy =="A":
+        if enemy == "A":
+                if outcome == "X":
                         score=3
-                elif enemy == "B":
+                elif outcome == "Y":
+                        score=4
+                elif outcome == "Z":
+                        score=8
+        elif enemy== "B":
+                if outcome =="X":
+                        score=1
+                elif outcome == "Y":
+                        score=5
+                elif outcome == "Z":
                         score=9
-                elif enemy == "C":
+        elif enemy== "C":
+                if outcome =="X":
+                        score=2
+                elif outcome == "Y":
                         score=6
+                elif outcome == "Z":
+                        score=7
         return score
         
 
@@ -29,6 +34,6 @@ inputfile = open('Day2/input.txt', 'r')
 for line in inputfile:
         moves=line.split()
         enemy=moves[0]
-        me=moves[1]
-        score= score+rps(enemy, me)
+        outcome=moves[1]
+        score= score+rps(enemy, outcome)
 print("Score: " + str(score))
